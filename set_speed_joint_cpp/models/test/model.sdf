@@ -1,0 +1,522 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="test">
+    <static>false</static>
+    <link name="base">
+    <pose>0 0 0.0217 0 0 0</pose> 
+      <inertial>
+  <!-- Volume:  3.9287802100e-04 -->
+        <mass> 5.0 </mass> <!-- unit:kg -->
+  <!-- Center of mass:  0.0000000000e+00 -1.4999970000e-02 -0.0000000000e+00 
+  <pose>  0.0000000000e+00 -1.4999970000e-02 -0.0000000000e+00 0 0 0 </pose> -->
+
+  <!-- Inertia matrix --> <!-- unit:kg m^2 -->
+        <inertia>
+          <ixx>  4.3036377632e-03 </ixx>
+          <ixy>  0.0000000000e+00 </ixy>
+          <ixz> -0.0000000000e+00 </ixz>
+          <iyy>  1.1707939223e-02 </iyy>
+          <iyz> -0.0000000000e+00 </iyz>
+          <izz>  8.1490764216e-03 </izz>
+        </inertia>
+      </inertial> 
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://test/meshes/test.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">       
+        <geometry>
+          <mesh>
+            <uri>model://test/meshes/test.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <sensor name="base_laser" type="ray">
+        <always_on>1</always_on>
+        <visualize>0</visualize>
+        <update_rate>20.000000</update_rate>
+        <pose>0.08 0 0 0 0 0</pose>
+        <ray>
+          <noise>
+           <type>gaussian</type>
+           <mean>0.0</mean>
+           <stddev>0.1</stddev>
+          </noise>
+          <scan>
+            <horizontal>
+              <samples>320</samples>
+              <resolution>1.000000</resolution>
+              <min_angle>-2.268900</min_angle>
+              <max_angle>2.268900</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.080000</min>
+            <max>10.000000</max>
+            <resolution>0.010000</resolution>
+          </range>
+        </ray>
+        <plugin name='laser_controller' filename='libgazebo_ros_laser.so'>
+          <gaussianNoise>0.005</gaussianNoise>
+          <alwaysOn>1</alwaysOn>
+          <updateRate>20</updateRate>
+          <topicName>scan</topicName>
+          <frameName>laser</frameName>
+        </plugin>
+      </sensor>
+    </link>
+
+
+
+
+
+
+
+
+    <link name="leg1">     
+        
+      <pose>0 0.0605 0.0067 0 0 0</pose>
+
+        <inertial>
+  <!-- Volume:  4.7874590000e-06 -->
+          <mass> 0.5 </mass>
+  <!-- Center of mass:  4.6786200000e-03 -5.9872200000e-03 -4.7236000000e-03 
+  <pose>  4.6786200000e-03 -5.9872200000e-03 -4.7236000000e-03 0 0 0 </pose> -->
+  <!-- Inertia matrix -->
+          <inertia>
+            <ixx>  5.5139218947e-05 </ixx>
+            <ixy>  3.1059482703e-06 </ixy>
+            <ixz>  7.4517609446e-07 </ixz>
+            <iyy>  3.3311825751e-05 </iyy>
+   	    <iyz> -6.4708648158e-07 </iyz>
+   	    <izz>  8.0856494019e-05 </izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">    
+        <geometry>
+          <mesh>
+            <uri>model://test/meshes/leg1.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.0</mu>
+              <mu2>0.0</mu2>
+            </ode>
+          </friction>
+        </surface>
+        </collision>
+        <visual name="visual">       
+          <geometry>
+            <mesh>
+              <uri>model://test/meshes/leg1.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+
+
+    <link name="leg2">          
+      <pose>0 -0.0605 0.0067 0 0 0</pose>
+      <inertial>
+  <!-- Volume:  4.7874590000e-06 -->
+        <mass> 0.5 </mass>
+  <!-- Center of mass:  4.6786200000e-03  5.9872200000e-03  4.7236000000e-03 
+  <pose>  4.6786200000e-03  5.9872200000e-03  4.7236000000e-03 0 0 0 </pose> -->
+  <!-- Inertia matrix -->
+        <inertia>
+          <ixx>  5.5139218947e-05 </ixx>
+          <ixy> -3.1059482703e-06 </ixy>
+          <ixz> -7.4517609446e-07 </ixz>
+          <iyy>  3.3311825751e-05 </iyy>
+          <iyz> -6.4708648158e-07 </iyz>
+          <izz>  8.0856494019e-05 </izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">    
+        <geometry>
+          <mesh>
+            <uri>model://test/meshes/leg2.dae</uri>
+          </mesh>
+        </geometry>
+      <surface>
+        <friction>
+          <ode>
+            <mu>0.0</mu>
+            <mu2>0.0</mu2>
+          </ode>
+        </friction>
+      </surface>
+        </collision>
+      <visual name="visual">       
+        <geometry>
+          <mesh>
+            <uri>model://test/meshes/leg2.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="leg3">     
+       
+      <pose>-0.05 0.0455 0.0067 0 0 0</pose>
+
+      <inertial>
+  <!-- Volume:  4.7874600000e-06 -->
+        <mass> 0.5 </mass>
+
+  <!-- Center of mass: -1.5920000000e-05  7.5984400000e-03  4.7236000000e-03 
+  <pose> -1.5920000000e-05  7.5984400000e-03  4.7236000000e-03 0 0 0 </pose> -->
+
+  <!-- Inertia matrix -->
+        <inertia>
+          <ixx>  4.9836416388e-05 </ixx>
+          <ixy>  9.8628395851e-06 </ixy>
+          <ixz> -1.8669607683e-07 </ixz>
+          <iyy>  3.8614630723e-05 </iyy>
+          <iyz> -9.6909425875e-07 </iyz>
+          <izz>  8.0856487574e-05 </izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">    
+        <geometry>
+          <mesh>
+            <uri>model://test/meshes/leg3.dae</uri>
+          </mesh>
+        </geometry>
+      <surface>
+        <friction>
+          <ode>
+            <mu>0.0</mu>
+            <mu2>0.0</mu2>
+          </ode>
+        </friction>
+      </surface>
+        </collision>
+      <visual name="visual">       
+        <geometry>
+          <mesh>
+            <uri>model://test/meshes/leg3.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+
+    <link name="leg4">     
+       
+      <pose>-0.05 -0.0355 0.0067 0 0 0</pose>
+      <inertial>
+  <!-- Volume:  4.7874600000e-06 -->
+        <mass> 0.5 </mass>
+
+  <!-- Center of mass:  1.5920000000e-05 -7.5984400000e-03  4.7236000000e-03 
+  <pose>  1.5920000000e-05 -7.5984400000e-03  4.7236000000e-03 0 0 0 </pose> -->
+
+  <!-- Inertia matrix -->
+        <inertia>
+          <ixx>  4.9836416388e-05 </ixx>
+          <ixy>  9.8628395851e-06 </ixy>
+          <ixz>  1.8669607683e-07 </ixz>
+          <iyy>  3.8614630723e-05 </iyy>
+          <iyz>  9.6909425875e-07 </iyz>
+          <izz>  8.0856487574e-05 </izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">    
+        <geometry>
+          <mesh>
+            <uri>model://test/meshes/leg4.dae</uri>
+          </mesh>
+        </geometry>
+      <surface>
+        <friction>
+          <ode>
+            <mu>0.0</mu>
+            <mu2>0.0</mu2>
+          </ode>
+        </friction>
+      </surface>
+        </collision>
+      <visual name="visual">       
+        <geometry>
+          <mesh>
+            <uri>model://test/meshes/leg4.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+
+
+    <link name="leg5">     
+       
+     <pose>0.05 0.0355 0.0067 0 0 0</pose>
+
+      <inertial>
+  <!-- Volume:  4.7874720000e-06 -->
+        <mass> 0.5 </mass>
+
+  <!-- Center of mass:  2.6693600000e-03  7.1141700000e-03 -4.7236100000e-03 
+  <pose>  2.6693600000e-03  7.1141700000e-03 -4.7236100000e-03 0 0 0 </pose>-->
+
+  <!-- Inertia matrix -->
+        <inertia>
+    	  <ixx>  4.2010292697e-05 </ixx>
+   	   <ixy> -1.1128764826e-05 </ixy>
+    	  <ixz>  1.6360409001e-07 </ixz>
+    	  <iyy>  4.6440971352e-05 </iyy>
+    	  <iyz>  9.7325895587e-07 </iyz>
+    	  <izz>  8.0856713105e-05 </izz>
+  	</inertia>
+      </inertial>
+      <collision name="collision">    
+        <geometry>
+          <mesh>
+            <uri>model://test/meshes/leg5.dae</uri>
+          </mesh>
+        </geometry>
+      <surface>
+        <friction>
+          <ode>
+            <mu>0.0</mu>
+            <mu2>0.0</mu2>
+          </ode>
+        </friction>
+      </surface>
+        </collision>
+      <visual name="visual">       
+        <geometry>
+          <mesh>
+            <uri>model://test/meshes/leg5.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+
+
+    <link name="leg6">     
+        
+      <pose>0.05 -0.0355 0.0067 0 0 0</pose>
+
+      <inertial>
+  <!-- Volume:  4.7874720000e-06 -->
+  	<mass> 0.5 </mass>
+
+  <!-- Center of mass:  2.6693600000e-03 -7.1141700000e-03  4.7236100000e-03 
+  <pose>  2.6693600000e-03 -7.1141700000e-03  4.7236100000e-03 0 0 0 </pose> -->
+
+  <!-- Inertia matrix -->
+  	<inertia>
+    	  <ixx>  4.2010292697e-05 </ixx>
+    	  <ixy>  1.1128764826e-05 </ixy>
+    	  <ixz> -1.6360409001e-07 </ixz>
+    	  <iyy>  4.6440971352e-05 </iyy>
+    	  <iyz>  9.7325895587e-07 </iyz>
+   	  <izz>  8.0856713105e-05 </izz>
+  	</inertia>
+      </inertial>
+      <collision name="collision">    
+        <geometry>
+          <mesh>
+            <uri>model://test/meshes/leg6.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.0</mu>
+              <mu2>0.0</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="visual">       
+        <geometry>
+          <mesh>
+            <uri>model://test/meshes/leg6.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+
+
+
+
+
+      <joint type="revolute" name="leg1">
+        <pose>0 0 0 0 0 0</pose>
+        <child>leg1</child>
+        <parent>base</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+<!--
+        <dynamics>
+           <damping>2.000000</damping>
+        </dynamics>
+        -->
+          <limit>
+            <lower>-10000000000000000000</lower>
+            <upper>100000000000000</upper>
+          
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>1</spring_reference>
+            <spring_stiffness>1</spring_stiffness>
+          </dynamics>
+          
+        </axis>
+      </joint>
+
+
+
+      <joint type="revolute" name="leg2">
+        <pose>0 0 0 0 0 0</pose>
+        <child>leg2</child>
+        <parent>base</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+<!--
+        <dynamics>
+           <damping>2.000000</damping>
+        </dynamics>
+        -->
+          <limit>
+            <lower>-10000000000000000000</lower>
+            <upper>100000000000000</upper>
+          
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>1</spring_reference>
+            <spring_stiffness>1</spring_stiffness>
+          </dynamics>
+          
+
+
+        </axis>
+      </joint>
+
+
+
+
+      <joint type="revolute" name="leg3">
+        <pose>0 0 0 0 0 0</pose>
+        <child>leg3</child>
+        <parent>base</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+<!--
+        <dynamics>
+           <damping>2.000000</damping>
+        </dynamics>
+        -->
+          <dynamics>
+            <spring_reference>1</spring_reference>
+            <spring_stiffness>1</spring_stiffness>
+          </dynamics>
+          <limit>
+            <lower>-10000000000000000000</lower>
+            <upper>100000000000000</upper>
+          
+            <velocity>0</velocity>
+          </limit>
+          
+        </axis>
+      </joint>      
+
+
+
+
+      <joint type="revolute" name="leg4">
+        <pose>0 0 0 0 0 0</pose>
+        <child>leg4</child>
+        <parent>base</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+<!--
+        <dynamics>
+           <damping>2.000000</damping>
+        </dynamics>
+        -->
+          <limit>
+            <lower>-10000000000000000000</lower>
+            <upper>100000000000000</upper>
+          
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>1</spring_reference>
+            <spring_stiffness>1</spring_stiffness>
+          </dynamics>
+          
+
+        </axis>
+      </joint>      
+
+
+
+
+      <joint type="revolute" name="leg5">
+        <pose>0 0 0 0 0 0</pose>
+        <child>leg5</child>
+        <parent>base</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+<!--
+        <dynamics>
+           <damping>2.000000</damping>
+        </dynamics>
+        -->
+          <limit>
+            <lower>-10000000000000000000</lower>
+            <upper>100000000000000</upper>
+          
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>1</spring_reference>
+            <spring_stiffness>1</spring_stiffness>
+          </dynamics>
+          
+        </axis>
+      </joint>      
+
+
+
+
+      <joint type="revolute" name="leg6">
+        <pose>0 0 0 0 0 0</pose>
+        <child>leg6</child>
+        <parent>base</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-10000000000000000000</lower> <!-- an attribute specifying the lowwer joint limit (radians for revoluite joint, meters for prismatic joints). omit if joint is continuous. -->
+            <upper>100000000000000</upper> <!-- an attribute specifying the upper joint limit (radians for revoluite joint, meters for prismatic joints). omit if joint is continuous. -->
+          
+            <velocity>0</velocity>
+          </limit>
+<!--
+        <dynamics>
+           <damping>2.000000</damping>
+        </dynamics>
+        -->
+            <dynamics>
+              <spring_reference>1</spring_reference> <!-- the spring reference position for joint axis  -->
+              <spring_stiffness>1</spring_stiffness>  <!-- the spring stiffness for joint axis  -->
+              
+            </dynamics>
+            
+        </axis>
+      </joint>
+
+  </model>
+</sdf>
